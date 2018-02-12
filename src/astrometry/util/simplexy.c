@@ -482,8 +482,10 @@ int simplexy_run(simplexy_t* s) {
 			s->fluxL[i] -= s->globalbg;
 			s->backgroundL[i] += s->globalbg;
 
+
 		}
 
+		logmsg("peak (%i, %i) \n", ix, iy);
     }
 
 	FREEVEC(bgfree);

@@ -10,6 +10,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <math.h>
+#include <float.h>
 
 #include "os-features.h"
 #include "image2xy.h"
@@ -19,6 +20,40 @@
 #include "errors.h"
 #include "log.h"
 #include "mathutil.h"
+#include "lodepng.h"
+
+static void write_png(const char *filename, float *image, unsigned width, unsigned height, int npeaks, float *xlist, float *ylist) {
+	unsigned char *png_img = malloc(width * height * 4);
+
+	unsigned x, y;
+	for (y = 0; y < height; y++)
+		for (x = 0; x < width; x++) {
+			unsigned char val = (unsigned char)(image[width * y + x] * 255);
+
+			png_img[4 * width * y + 4 * x + 0] = val;
+			png_img[4 * width * y + 4 * x + 1] = val;
+			png_img[4 * width * y + 4 * x + 2] = val;
+			png_img[4 * width * y + 4 * x + 3] = 255;
+		}
+
+	int i;
+	for (i = 0; i < npeaks; i++) {
+		x = (unsigned)(xlist[i] + 0.5);
+		y = (unsigned)(ylist[i] + 0.5);
+
+		png_img[4 * width * y + 4 * x + 0] = 255;
+		png_img[4 * width * y + 4 * x + 1] = 0;
+		png_img[4 * width * y + 4 * x + 2] = 0;
+		png_img[4 * width * y + 4 * x + 3] = 255;
+	}
+
+	unsigned error = lodepng_encode32_file(filename, png_img, width, height);
+
+	if (error)
+		printf("error %u: %s\n", error, lodepng_error_text(error));
+
+	free(png_img);
+}
 
 static float* upconvert(unsigned char* u8,
                         int nx, int ny) {
@@ -94,7 +129,13 @@ int image2xy_run(simplexy_t* s,
 			tryagain = TRUE;
 			downsample_as_required--;
 		}
+
+		if (!tryagain && s->image) {
+			write_png("debug-image.png", s->image, s->nx, s->ny, s->npeaks, s->x, s->y);
+		}
+
 	} while (tryagain);
+
 
 	for (jj=0; jj<s->npeaks; jj++) {
 		assert(isfinite((s->x)[jj]));

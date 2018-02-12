@@ -14,6 +14,7 @@ CFLAGS_DEF += -DAN_GIT_URL='"$(AN_GIT_URL)"'
 CFLAGS_DEF += -DHAVE_UNION_SEMUN -DHAVE_NET_SERVICES
 CFLAGS_DEF += -DDONT_INCLUDE_OS_FEATURES_CONFIG_H -DNEED_QSORT_R=0 -DNEED_CANONICALIZE_FILE_NAME=1
 
+LODEPNG = $(SRCDIR)/lodepng
 CFITSIO = $(SRCDIR)/cfitsio
 ZLIB = $(SRCDIR)/cfitsio/zlib
 ASTROMETRY = $(SRCDIR)/astrometry
@@ -28,7 +29,10 @@ CFLAGS = -Wall \
 	-I$(ASTROMETRY)/libkd \
 	-I$(CFITSIO) \
 	-I$(ZLIB) \
+	-I$(LODEPNG) \
 	$(CFLAGS_DEF)
+
+LODEPNG_SRC := $(addprefix $(LODEPNG)/, lodepng.c)
 
 CFITSIO_SRC := $(addprefix $(CFITSIO)/, buffers.c cfileio.c checksum.c \
 	drvrfile.c drvrmem.c drvrnet.c drvrsmem.c drvrgsiftp.c editcol.c edithdu.c \
@@ -58,7 +62,7 @@ ASTROMETRY_SRC += $(addprefix $(ASTROMETRY)/util/, bl.c bt.c an-endian.c \
 
 ASTROMETRY_SRC += $(addprefix $(ASTROMETRY)/, blind/image2xy-files.c blind/image2xy-main.c)
 
-SRCS := $(ZLIB_SRC) $(CFITSIO_SRC) $(ASTROMETRY_SRC)
+SRCS := $(LODEPNG_SRC) $(ZLIB_SRC) $(CFITSIO_SRC) $(ASTROMETRY_SRC)
 OBJS := $(patsubst %.c,$(OBJDIR)/%.o,$(SRCS))
 
 $(OBJDIR)/%.o: %.c
