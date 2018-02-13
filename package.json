@@ -1,0 +1,19 @@
+{
+  "name": "astrometry.js",
+  "version": "1.0.0",
+  "description": "Extract star pixel coordinates from a FITS image using JavaScript",
+  "main": "./dist/astrometry.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "astrometry",
+    "source",
+    "extract",
+    "star",
+    "extract",
+    "image2xy"
+  ],
+  "author": "Zelimir Fedoran",
+  "license": "MIT"
+}
