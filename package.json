@@ -1,6 +1,6 @@
 {
   "name": "astrometry.js",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Extract star pixel coordinates from a FITS image using JavaScript",
   "main": "./dist/astrometry.js",
   "scripts": {
