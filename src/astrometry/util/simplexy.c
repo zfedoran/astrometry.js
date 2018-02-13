@@ -485,7 +485,7 @@ int simplexy_run(simplexy_t* s) {
 
 		}
 
-		logmsg("peak (%i, %i) \n", ix, iy);
+		//logmsg("peak (%i, %i) \n", ix, iy);
     }
 
 	FREEVEC(bgfree);
