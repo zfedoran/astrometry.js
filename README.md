@@ -10,7 +10,7 @@ A port of the blind image2xy solver utility from [astrometry.net](http://astrome
 #### Install <small>(Node.js)</small>
 
 ```
-npm install astrometry
+npm install astrometry.js
 ```
 
 #### Usage
@@ -21,7 +21,7 @@ Read a FITS image file into a buffer (or `Uint8Array` in the browser, see browse
 const fs = require('fs');
 const buf = fs.readFileSync('./example.fits');
 
-const image2xy = require('astrometry').image2xy;
+const image2xy = require('astrometry.js').image2xy;
 
 const result = image2xy(buf, { verbose: true, extension: 0 });
 ```
@@ -32,7 +32,7 @@ const result = image2xy(buf, { verbose: true, extension: 0 });
 #### Install <small>(Browser)</small>
 
 ``` html
-<script src="https://cdn.jsdelivr.net/npm/astrometry"></script>
+<script src="https://cdn.jsdelivr.net/npm/astrometry.js"></script>
 ```
 
 #### Usage
