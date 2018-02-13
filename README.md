@@ -47,7 +47,7 @@ reader.onload = function (e) {
     var buf = new Uint8Array(e.currentTarget.result);
 
     // Get a fits file buffer containing a star list
-    const results = astrometry.image2xy(buf, { verbose: true, extension: 0 });
+    const results = astrometry(buf, { verbose: true, extension: 0 });
 };
 
 reader.readAsArrayBuffer(file);
