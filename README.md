@@ -5,6 +5,7 @@ Extract star pixel coordinates from a FITS image using JavaScript (supported on 
 
 A port of the blind image2xy solver utility from [astrometry.net](http://astrometry.net/) using [Emscripten](http://emscripten.org).
 
+----------------------------------------------------------
 
 #### Install <small>(Node.js)</small>
 
@@ -12,7 +13,7 @@ A port of the blind image2xy solver utility from [astrometry.net](http://astrome
 npm install astrometry
 ```
 
-#### Usage <small>(Node.js)</small>
+#### Usage
 
 Read a FITS image file into a buffer (or `Uint8Array` in the browser, see browser example below))
 
@@ -25,13 +26,16 @@ const image2xy = require('astrometry').image2xy;
 const result = image2xy(buf, { verbose: true, extension: 0 });
 ```
 
+----------------------------------------------------------
+
+
 #### Install <small>(Browser)</small>
 
 ``` html
 <script src="https://cdn.jsdelivr.net/npm/astrometry"></script>
 ```
 
-#### Usage <small>(Browser)</small>
+#### Usage
 
 You'll need to do a little bit of work to get a file buffer on the browser. 
 
@@ -48,6 +52,9 @@ reader.onload = function (e) {
 
 reader.readAsArrayBuffer(file);
 ```
+
+----------------------------------------------------------
+
 
 ### Example
 
@@ -71,29 +78,6 @@ const result = image2xy(buf, { verbose: true, extension: 0 });
     simplexy: finding objects...
     simplexy: found 734 blobs
     simplexy: finding peaks...
-    Failed to find (5x5) centroid of peak 0, subpeak 0 at (2,4)
-    Failed to find (5x5) centroid of peak 4, subpeak 0 at (4093,6)
-    Failed to find (5x5) centroid of peak 6, subpeak 0 at (29,12)
-    Failed to find (3x3) centroid of peak 76, subpeak 0 at (1,359), and too close to edge for 5x5
-    Failed to find (5x5) centroid of peak 92, subpeak 0 at (4085,479)
-    Failed to find (5x5) centroid of peak 100, subpeak 0 at (3598,530)
-    Failed to find (5x5) centroid of peak 172, subpeak 0 at (22,960)
-    Failed to find (5x5) centroid of peak 178, subpeak 0 at (2007,992)
-    Failed to find (5x5) centroid of peak 299, subpeak 0 at (2951,1595)
-    Failed to find (5x5) centroid of peak 329, subpeak 0 at (8,1802)
-    Failed to find (5x5) centroid of peak 346, subpeak 0 at (321,1918)
-    Failed to find (5x5) centroid of peak 389, subpeak 0 at (1681,2118)
-    Failed to find (5x5) centroid of peak 403, subpeak 0 at (772,2199)
-    Failed to find (5x5) centroid of peak 410, subpeak 0 at (768,2208)
-    Failed to find (5x5) centroid of peak 428, subpeak 0 at (44,2287)
-    Failed to find (5x5) centroid of peak 434, subpeak 0 at (2,2317)
-    Failed to find (5x5) centroid of peak 468, subpeak 0 at (756,2574)
-    Failed to find (5x5) centroid of peak 531, subpeak 0 at (940,3038)
-    Failed to find (5x5) centroid of peak 570, subpeak 0 at (1132,3247)
-    Failed to find (3x3) centroid of peak 573, subpeak 1 at (1525,3248), and too close to edge for 5x5
-    Failed to find (5x5) centroid of peak 629, subpeak 0 at (4092,3566)
-    Failed to find (5x5) centroid of peak 675, subpeak 0 at (1921,3846)
-    Failed to find (3x3) centroid of peak 733, subpeak 0 at (2743,4094), and too close to edge for 5x5
     simplexy: found 743 sources.
 ```
 
