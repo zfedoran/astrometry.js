@@ -1,24 +1,18 @@
 # astrometry.js
 Extract star pixel coordinates from a FITS image using JavaScript (supported on Node.js and your Browser)
 
-### image2xy
+## image2xy
 
 A port of the blind image2xy solver utility from [astrometry.net](http://astrometry.net/) using [Emscripten](http://emscripten.org).
 
 
-#### Install (Node.js)
+#### Install <small>(Node.js)</small>
 
 ```
 npm install astrometry
 ```
 
-#### Install (Browser)
-
-``` html
-<script src="https://cdn.jsdelivr.net/npm/astrometry"></script>
-```
-
-### Usage (Node.js)
+#### Usage <small>(Node.js)</small>
 
 Read a FITS image file into a buffer (or `Uint8Array` in the browser, see browser example below))
 
@@ -31,7 +25,13 @@ const image2xy = require('astrometry').image2xy;
 const result = image2xy(buf, { verbose: true, extension: 0 });
 ```
 
-### Usage (Browser)
+#### Install <small>(Browser)</small>
+
+``` html
+<script src="https://cdn.jsdelivr.net/npm/astrometry"></script>
+```
+
+#### Usage <small>(Browser)</small>
 
 You'll need to do a little bit of work to get a file buffer on the browser. 
 
