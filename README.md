@@ -37,7 +37,7 @@ const result = image2xy(buf, { verbose: true, extension: 0 });
 
 #### Usage
 
-You'll need to do a little bit of work to get a file buffer on the browser. 
+You'll need to do a little bit of work to get a file buffer on the browser. Live [example](https://jsfiddle.net/cj5sf2h2/17/).
 
 ``` js
 var reader = new FileReader();
